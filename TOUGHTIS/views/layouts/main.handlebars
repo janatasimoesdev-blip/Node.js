@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tougths</title>
+    <link rel="shortcut icon" href="/img/favico-3.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/midia.css">
+   
+    {{!-- Toastify CSS --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    {{!-- BOOTSTAO ICON --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+        <div class="conteiner">
+            <nav class="navBar">
+                <div>
+                    <a href="/" id="logo">
+                        <img class="logoIMG  " src="/img/logo-2.png" alt="Logo Da Pagina">
+                    </a>
+                </div>
+                <ul>
+                    <li>
+                        <a href="/">Pensamentos</a>
+                    </li>
+                        {{!-- URL apos autenticação --}}
+                    {{#if session.user.id}}
+                        <li><a href="/tougths/dashboard">Crie Seu Pensamento</a></li>
+                        <li><a href="/logout">Sair</a></li>
+                    {{else}}
+                        <li><a href="/login">Entrar</a></li>
+                        <li><a href="/register">Registrar</a></li>
+                    {{/if}}
+                </ul>
+            </nav>
+            <main class="main">
+                
+                {{{body}}}
+            </main>
+            <footer>
+                adad
+                <span>Tougths</span> &copf; 2024;
+            </footer>
+        </div>
+        
+    {{!-- Passa a mensagem da sessão para o front em JSON --}}
+    <script>
+        window.messageFromServer = {{{json message}}} || null;
+    </script>
+
+    {{!-- Toastify JS --}}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    
+    <script src="/js/script.js"></script>
+    <script src="/js/scriptAuth.js"></script>
+</body>
+</html>
